@@ -5,43 +5,31 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install pygbag
+      - name: Install pygbag and build game
         run: |
+          echo "Installing pygbag..."
           python -m pip install --upgrade pip
           pip install pygbag
-
-      - name: Build game with pygbag
-        run: |
-          python -m pygbag --build .
-          ls -la build/web || echo "Build folder not created!"
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: './build/web'
+          echo "Building the game with pygbag..."
+          python -m pygbag --build main.py
+          echo "Build complete!"
+          ls -la build/web
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/web
+          branch: gh-pages
