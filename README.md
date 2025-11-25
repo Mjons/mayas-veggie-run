@@ -4,7 +4,7 @@ A fun endless runner game where Maya runs to collect healthy veggies, avoid obst
 
 ## Play Now!
 
-**[Play in your browser!](#)** *(Add your GitHub Pages link here after deployment)*
+**[Play in your browser!](https://mjons.github.io/mayas-veggie-run/)**
 
 ## About the Game
 
