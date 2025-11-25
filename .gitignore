@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Pygame
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Build folders (keep docs/ if using manual GitHub Pages deployment)
+build/web/
+
+# PrepSprites working folders
+PrepSprites/input/
+PrepSprites/output/
+
+# Don't ignore docs folder (used for GitHub Pages)
+!docs/
+
+# Windows reserved names
+nul

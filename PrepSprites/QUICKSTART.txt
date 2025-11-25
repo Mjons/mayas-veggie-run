@@ -1,0 +1,89 @@
+================================
+MAYA'S SPRITE PIPELINE
+Quick Start Guide
+================================
+
+STEP 1: INSTALL DEPENDENCIES
+-----------------------------
+Run this command in your terminal:
+
+    pip install pygame pillow numpy
+
+Or use the requirements file:
+
+    pip install -r requirements.txt
+
+
+STEP 2: ADD YOUR SPRITE SHEET
+-----------------------------
+Put your sprite sheet image in the "input" folder:
+
+    PrepSprites/input/your_sprite.png
+
+
+STEP 3: RUN THE PIPELINE
+-----------------------------
+Run this command:
+
+    python sprite_pipeline.py
+
+
+STEP 4: FOLLOW THE PROMPTS
+-----------------------------
+The pipeline will ask you:
+
+1. Which file to process
+2. Do you want to clean it? (say YES for AI sprites, NO if already pixel-perfect)
+3. How many rows and columns?
+4. Preview and verify
+5. Name your output file
+
+That's it!
+
+
+STEP 5: USE IN YOUR GAME
+-----------------------------
+1. Copy the output file from "output" folder
+2. Put it in your game's "assets/images" folder
+3. Use the code snippet that was generated
+
+Example:
+    Copy:  output/my_sprite_processed.png
+    To:    ../assets/images/my_sprite.png
+
+
+COMMON SETTINGS
+-----------------------------
+For AI-generated sprites:
+- Clean? YES
+- Target width: 512
+- Colors: 16
+- Contrast: 1.2
+- Saturation: 1.2
+
+For hand-drawn pixel art:
+- Clean? NO (or use just to resize)
+
+
+TIPS
+-----------------------------
+- Use PNG format for transparency
+- Keep animations in rows, frames in columns
+- Label which row is which animation!
+- Preview window controls:
+    SPACE = next animation
+    UP/DOWN = adjust speed
+    ESC = done
+
+
+HELP
+-----------------------------
+Read README.md for detailed instructions
+Check requirements.txt for dependencies
+
+Questions? The script provides helpful prompts!
+
+
+================================
+Happy sprite-making! 🎮
+================================

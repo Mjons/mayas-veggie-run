@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python Maya.py:*)",
+      "Bash(python -m py_compile:*)",
+      "Bash(dir /b assetsimagessprite_r*.png 2)",
+      "Bash(nul)",
+      "Bash(dir /b sprite_r*.png 2)",
+      "Bash(dir /s /b sprite_r*.png 2)",
+      "Bash(dir /b \"c:\\Users\\unrea\\Downloads\\MayasAdventure\\assets\\images\\sprite_r*.png\" 2)",
+      "Bash(dir:*)",
+      "Bash(copy:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(del nul 2)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
