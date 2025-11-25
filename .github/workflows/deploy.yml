@@ -31,7 +31,7 @@ jobs:
 
       - name: Build game with pygbag
         run: |
-          python -m pygbag --build main.py
+          python -m pygbag --build .
           ls -la build/web || echo "Build folder not created!"
 
       - name: Setup Pages
