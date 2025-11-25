@@ -65,12 +65,13 @@ sounds = {
 }
 
 # --- LOAD BACKGROUND MUSIC ---
-try:
-    pygame.mixer.music.load("assets/sounds/big and strong.mp3")
-    pygame.mixer.music.set_volume(0.3)  # 30% volume for background music
-    pygame.mixer.music.play(-1)  # Loop forever
-except:
-    pass  # No background music if file doesn't exist
+# Note: MP3 not supported in web version, background music disabled for web deployment
+# try:
+#     pygame.mixer.music.load("assets/sounds/big and strong.mp3")
+#     pygame.mixer.music.set_volume(0.3)  # 30% volume for background music
+#     pygame.mixer.music.play(-1)  # Loop forever
+# except:
+#     pass  # No background music if file doesn't exist
 
 # --- LOAD BACKGROUND IMAGE ---
 background_image = pygame.image.load("assets/images/bg.png").convert()
