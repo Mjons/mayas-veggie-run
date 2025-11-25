@@ -57,21 +57,20 @@ def load_sound(filepath):
 
 # --- LOAD SOUNDS ---
 sounds = {
-    'jump': load_sound("assets/sounds/jump.wav"),
-    'collect': load_sound("assets/sounds/collect.wav"),
-    'hit': load_sound("assets/sounds/hit.wav"),
-    'love': load_sound("assets/sounds/love.wav"),
-    'game_over': load_sound("assets/sounds/game_over.wav"),
+    'jump': load_sound("assets/sounds/jump.ogg"),
+    'collect': load_sound("assets/sounds/collect.ogg"),
+    'hit': load_sound("assets/sounds/hit.ogg"),
+    'love': load_sound("assets/sounds/love.ogg"),
+    'game_over': load_sound("assets/sounds/game_over.ogg"),
 }
 
 # --- LOAD BACKGROUND MUSIC ---
-# Note: MP3 not supported in web version, background music disabled for web deployment
-# try:
-#     pygame.mixer.music.load("assets/sounds/big and strong.mp3")
-#     pygame.mixer.music.set_volume(0.3)  # 30% volume for background music
-#     pygame.mixer.music.play(-1)  # Loop forever
-# except:
-#     pass  # No background music if file doesn't exist
+try:
+    pygame.mixer.music.load("assets/sounds/big and strong.ogg")
+    pygame.mixer.music.set_volume(0.3)  # 30% volume for background music
+    pygame.mixer.music.play(-1)  # Loop forever
+except:
+    pass  # No background music if file doesn't exist
 
 # --- LOAD BACKGROUND IMAGE ---
 background_image = pygame.image.load("assets/images/bg.png").convert()
