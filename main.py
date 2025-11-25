@@ -215,43 +215,29 @@ class Object(pygame.sprite.Sprite):
             # Start with first frame
             self.image = Object.elmo_frames[0][0]
             self.rect = self.image.get_rect()
-            self.rect.y = -100  # Start above screen
-            self.rect.x = SCREEN_WIDTH + random.randint(100, 400)  # Random horizontal position
-            # Elmo drops down instead of moving horizontally initially
-            self.drop_speed = 3  # Speed of dropping
-            self.target_y = random.randint(50, 150)  # Random drop height (higher on screen)
-            self.is_dangling = False  # Track if Elmo has reached target and is dangling
-            self.sway_offset = 0  # For swaying motion
-            self.sway_speed = random.uniform(0.05, 0.1)  # Random sway speed
-            self.sway_amplitude = random.randint(3, 8)  # Random sway distance
-            self.base_x = self.rect.x  # Store base x position for swaying
-            self.speed = speed  # Will scroll with game once at target height
+            self.rect.y = random.randint(50, 150)  # Start at random height
+            self.rect.x = SCREEN_WIDTH + random.randint(100, 400)  # Start off screen right
+            # Elmo floats like a balloon with gentle bobbing motion
+            self.bob_offset = 0  # For bobbing up/down motion
+            self.bob_speed = random.uniform(0.03, 0.06)  # Slow gentle bobbing
+            self.bob_amplitude = random.randint(8, 15)  # How much he bobs up/down
+            self.base_y = self.rect.y  # Store base y position for bobbing
+            self.speed = speed * 0.5  # Floats slower than other objects
             return  # Don't set x position below
 
         self.rect.x = SCREEN_WIDTH + random.randint(0, 100)
         self.speed = speed
 
     def update(self):
-        # Special behavior for Elmo - drops down first, then dangles and sways
+        # Special behavior for Elmo - floats like a balloon with gentle bobbing
         if self.type == "elmo":
-            if self.rect.y < self.target_y:
-                # Still dropping
-                self.rect.y += self.drop_speed
-                # Update base_x as we scroll during drop
-                self.base_x -= self.speed * 0.2
-            else:
-                # At target height, start dangling with sway
-                if not self.is_dangling:
-                    self.is_dangling = True
-                    # base_x is already set during init
+            # Apply gentle bobbing motion using sine wave
+            self.bob_offset += self.bob_speed
+            bob_y = math.sin(self.bob_offset) * self.bob_amplitude
 
-                # Apply swaying motion using sine wave
-                self.sway_offset += self.sway_speed
-                sway_x = math.sin(self.sway_offset) * self.sway_amplitude
-
-                # Scroll slowly left while swaying
-                self.base_x -= self.speed * 0.2
-                self.rect.x = int(self.base_x + sway_x)
+            # Float slowly left while bobbing up/down
+            self.rect.x -= self.speed
+            self.rect.y = int(self.base_y + bob_y)
         else:
             # Normal horizontal scrolling for other objects
             self.rect.x -= self.speed
@@ -463,15 +449,6 @@ async def main():
 
             player_group.draw(screen)
             object_group.draw(screen)
-
-            # Draw string for dangling Elmo
-            for obj in object_group:
-                if obj.type == "elmo":
-                    # Draw a thin white line from top of screen to Elmo's top center
-                    # String attaches at the top center of Elmo's sprite
-                    string_start = (obj.rect.centerx, 0)
-                    string_end = (obj.rect.centerx, obj.rect.top + 5)  # Slightly into sprite for better attachment
-                    pygame.draw.line(screen, WHITE, string_start, string_end, 2)
 
             # UI
             health_text = font.render(f"Energy: {int(player.health)}%", True, BLACK)
