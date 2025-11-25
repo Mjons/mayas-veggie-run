@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya's Veggie Run</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 20px;
+        }
+        h1 {
+            color: #4ecca3;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .note {
+            color: #ff6b6b;
+            font-size: 18px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #2a1a2e;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Maya's Veggie Run</h1>
+
+        <div class="note">
+            <strong>This game requires Python and Pygame to run.</strong><br>
+            Since it uses native Pygame (not web-compatible), it needs to be run locally on your computer.
+        </div>
+
+        <div class="instructions">
+            <h2>How to Play Locally</h2>
+            <ol style="text-align: left; max-width: 500px; margin: 20px auto;">
+                <li>Download the game files from the repository</li>
+                <li>Install Python 3.7+ and Pygame:
+                    <pre style="background: #0a0a0a; padding: 10px; border-radius: 5px; margin: 10px 0;">pip install pygame</pre>
+                </li>
+                <li>Run the game:
+                    <pre style="background: #0a0a0a; padding: 10px; border-radius: 5px; margin: 10px 0;">python Maya.py</pre>
+                </li>
+            </ol>
+
+            <h3 style="margin-top: 30px;">Game Controls</h3>
+            <p><strong>SPACE:</strong> Jump</p>
+            <p><strong>Goal:</strong> Collect veggies to maintain energy</p>
+            <p><strong>Special:</strong> Find the puppy for full health!</p>
+        </div>
+
+        <p style="margin-top: 30px;">
+            <a href="https://github.com/Mjons/mayas-veggie-run"
+               style="color: #4ecca3; text-decoration: none; font-size: 18px; padding: 15px 30px; background: #16213e; border-radius: 8px; display: inline-block;">
+                Download from GitHub
+            </a>
+        </p>
+    </div>
+</body>
+</html>

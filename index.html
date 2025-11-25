@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya's Veggie Run - Loading...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1 {
+            color: #4ecca3;
+            margin-bottom: 20px;
+        }
+        .status {
+            background: #16213e;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .loading {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .spinner {
+            border: 4px solid #16213e;
+            border-top: 4px solid #4ecca3;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error {
+            color: #ff6b6b;
+            margin: 20px 0;
+        }
+        .instructions {
+            background: #0f3460;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        code {
+            background: #1a1a2e;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #4ecca3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥕 Maya's Veggie Run 🥕</h1>
+
+        <div class="status">
+            <div class="spinner"></div>
+            <p class="loading">Building the game...</p>
+            <p class="error" style="display: none;">The game hasn't been built yet!</p>
+
+            <div class="instructions">
+                <h3>What's happening?</h3>
+                <p>GitHub Actions should automatically build your game when you push code.</p>
+                <p><strong>The game will appear here once the build completes (usually 2-3 minutes).</strong></p>
+
+                <h4 style="margin-top: 20px;">Check build status:</h4>
+                <ol style="margin: 10px 0;">
+                    <li>Go to <a href="https://github.com/Mjons/mayas-veggie-run/actions" style="color: #4ecca3;" target="_blank">GitHub Actions</a></li>
+                    <li>Look for "Build and Deploy Maya's Veggie Run"</li>
+                    <li>Wait for the green checkmark ✓</li>
+                    <li>Refresh this page</li>
+                </ol>
+
+                <h4 style="margin-top: 20px;">Troubleshooting:</h4>
+                <p>If the build fails, the game needs to be built with <code>pygbag</code> (requires Python 3.8+).</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 30px; color: #aaa;">
+            <a href="https://github.com/Mjons/mayas-veggie-run" style="color: #4ecca3;">View Source Code on GitHub</a>
+        </p>
+    </div>
+
+    <script>
+        // Check if the game exists by trying to load it
+        fetch('./build/web/index.html')
+            .then(response => {
+                if (response.ok) {
+                    // Game exists! Redirect to it
+                    window.location.href = './build/web/index.html';
+                } else {
+                    // Show error message
+                    document.querySelector('.spinner').style.display = 'none';
+                    document.querySelector('.loading').style.display = 'none';
+                    document.querySelector('.error').style.display = 'block';
+                }
+            })
+            .catch(() => {
+                // Show error message
+                document.querySelector('.spinner').style.display = 'none';
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.error').style.display = 'block';
+            });
+    </script>
+</body>
+</html>
